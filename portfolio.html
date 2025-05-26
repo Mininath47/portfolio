@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meninath Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #3e8eeb, #9b59b6);
+      color: white;
+      padding: 100px 0 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    nav .fa-bars,
+    nav .fa-circle-xmark {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .header-text h1 {
+      font-size: 2.5rem;
+      margin-top: 20px;
+    }
+
+    .header-text span {
+      color: #ffc107;
+    }
+
+    /* About */
+    .about {
+      padding: 60px 0;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-col-1 img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .about-col-1,
+    .about-col-2 {
+      flex: 1 1 45%;
+    }
+
+    .sub-title {
+      font-size: 2rem;
+      color: #3e8eeb;
+      margin-bottom: 20px;
+    }
+
+    .tab-title {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .tab-links {
+      cursor: pointer;
+      font-weight: 600;
+      color: #555;
+      position: relative;
+    }
+
+    .tab-links.active-link::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: #3e8eeb;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+
+    .tab-contents {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .tab-contents.active-tab {
+      display: block;
+    }
+
+    .tab-contents ul {
+      list-style: none;
+    }
+
+    .tab-contents li {
+      margin: 10px 0;
+    }
+
+    /* Services */
+    #services {
+      padding: 60px 0;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .services-list div {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .services-list div:hover {
+      transform: translateY(-10px);
+    }
+
+    .services-list i {
+      font-size: 2rem;
+      color: #3e8eeb;
+      margin-bottom: 10px;
+    }
+
+    /* Portfolio */
+    #portfolio {
+      padding: 60px 0;
+    }
+
+    .work-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .work {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .work img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: 0.4s ease;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .work:hover .layer {
+      opacity: 1;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #3e8eeb;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #2c6bbf;
+    }
+
+    /* Contact */
+    #contact {
+      padding: 60px 0;
+    }
+
+    .contact-left,
+    .contact-right {
+      flex: 1 1 45%;
+    }
+
+    .contact-left p {
+      margin: 10px 0;
+    }
+
+    .contact-right form input,
+    .contact-right form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .Social-icons a {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      color: #3e8eeb;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    .copyright {
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: -220px;
+        background: #3e8eeb;
+        width: 200px;
+        transition: right 0.3s ease;
+        padding: 20px;
+      }
+
+      nav .fa-bars {
+        display: block;
+      }
+
+      nav ul.active {
+        right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <nav>
+        <h2>Meninath</h2>
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+        </ul>
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+      </nav>
+      <div class="header-text">
+        <p>UI/UX Designer</p>
+        <h1>Hi, I’m <span>Meninath</span> Honmane<br> from Maharashtra</h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <div id="about" class="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="./images/myimg.jpg" alt="About image">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About Me</h1>
+          <p>I am passionate about designing clean, user-friendly interfaces for web and mobile apps. With experience in UI/UX and development, I bring ideas to life with modern tools and creative design.</p>
+          <div class="tab-title">
+            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+            <p class="tab-links" onclick="opentab('education')">Education</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>UI/UX</span> <br> Designing Web/App interfaces</li>
+              <li><span>Web Development</span><br> Web Application Development</li>
+              <li><span>App Development</span><br> Building Android/iOS Apps</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li><span>2022 - Present</span><br> UI/UX Design Training at ET Institute</li>
+              <li><span>2022 - 2023</span><br> Team Lead at StarApp LLC</li>
+              <li><span>2022 - 2023</span><br> UI/UX Executive at Coin Digital Ltd.</li>
+              <li><span>2021 - 2022</span><br> Internship at eCart Ecommerce</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>2023</span><br> UI/UX Design Course at ET Institute</li>
+              <li><span>2023</span><br> BCS from Balbhim College, Beed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div id="services">
+    <div class="container">
+      <h1 class="sub-title">My Services</h1>
+      <div class="services-list">
+        <div>
+          <i class="fa-solid fa-code"></i>
+          <h2>Web Design</h2>
+          <p>Clean, modern, and responsive websites designed for performance and UX.</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-crop-simple"></i>
+          <h2>UI/UX Design</h2>
+          <p>Prototyping and wireframing user interfaces with a focus on usability.</p>
+        </div>
+        <div>
+          <i class="fa-brands fa-app-store-ios"></i>
+          <h2>App Design</h2>
+          <p>Designing intuitive mobile apps for both Android and iOS platforms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio -->
+  <div id="portfolio">
+    <div class="container">
+      <h1 class="sub-title">My Work</h1>
+      <div class="work-list">
+        <div class="work">
+          <img src="./images/part1.jpg" alt="App 1">
+          <!-- <div class="layer">
+            <h3>Social Media App</h3>
+            <p>Connect with talented people across the world. Available on Play Store.</p>
+          </div> -->
+        </div>
+        <div class="work">
+          <img src="./images/part2.jpg" alt="App 2">
+          <!-- <div class="layer">
+            <h3>Music App</h3>
+            <p>Stream your favorite music with ease and beautiful design.</p>
+          </div> -->
+        </div>
+        <div class="work">
+          <img src="./images/part3.jpg" alt="App 3">
+          <!-- <div class="layer">
+            <h3>Shopping App</h3>
+            <p>Shop online with a clean, fast, and user-friendly mobile experience.</p>
+          </div> -->
+        </div>
+      </div>
+      <a href="#" class="btn">See More</a>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact Me</h1>
+          <p><i class="fa-solid fa-paper-plane"></i> contact@example.com</p>
+          <p><i class="fa-solid fa-phone"></i> 0123456789</p>
+          <div class="Social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          <a href="img/RESUME.pdf" download class="btn">Download CV</a>
+        </div>
+        <div class="contact-right">
+          <form>
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 Meninath. Designed with <i class="fa-solid fa-heart"></i>.</p>
+    </div>
+  </div>
+
+  <script>
+    function openmenu() {
+      document.getElementById("sidemenu").classList.add("active");
+    }
+
+    function closemenu() {
+      document.getElementById("sidemenu").classList.remove("active");
+    }
+
+    const tabLinks = document.querySelectorAll(".tab-links");
+    const tabContents = document.querySelectorAll(".tab-contents");
+
+    function opentab(tabName) {
+      tabLinks.forEach(link => link.classList.remove("active-link"));
+      tabContents.forEach(content => content.classList.remove("active-tab"));
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabName).classList.add("active-tab");
+    }
+  </script>
+</body>
+</html>
